@@ -6,12 +6,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Run the game:** Open `index.html` in a web browser (Chrome, Firefox, Safari all work). No build step needed.
 
-**Commit changes:**
+## ⚠️ IMPORTANT: Regular Commits & Pushes
+
+**Commit and push regularly — at least after every completed feature or fix.** This ensures work is never lost and we have a clean history to revert to if needed.
+
+**Workflow:**
+1. Make changes to one or more files
+2. Test the changes in the browser
+3. Stage and commit with a clear message: `git add <files> && git commit -m "description"`
+4. Push immediately: `git push origin master`
+
+**Commit message format:**
 ```bash
-git add <files>
-git commit -m "Clear description of change"
-git push origin master
+git commit -m "Feature|Fix|Refactor|Docs: Short description of what changed and why"
 ```
+
+Examples:
+- `git commit -m "Feature: Add new Heavy enemy type with 3 health"`
+- `git commit -m "Fix: Reduce player collision radius for better movement"`
+- `git commit -m "Docs: Update CLAUDE.md with new level design guide"`
+
+**Never skip pushing.** If work isn't on GitHub, it's at risk of being lost.
 
 ## Architecture Overview
 
@@ -124,13 +139,15 @@ Open `index.html` → Press ENTER to start → Arrow keys to move, mouse to aim,
 - Level transitions work
 - Win screen appears after level 5
 
-## Git Workflow
+## Git Workflow (Critical)
 
-All changes should be committed with descriptive messages:
-```bash
-git add <files>
-git commit -m "Feature: Add new enemy type X with AI behavior"
-git push origin master
-```
+**After every meaningful change, immediately commit and push:**
 
-Avoid force-pushing; branch and merge if refactoring significantly. This allows easy reverting.
+1. **Stage changes:** `git add src/entities.js src/levels.js` (specific files, not `.`)
+2. **Commit with message:** `git commit -m "Feature: Add new enemy type X with AI behavior"`
+3. **Push to GitHub:** `git push origin master`
+4. **Verify on GitHub:** Visit https://github.com/arjtgit033/retro-shooter to confirm the push
+
+**Commit early, commit often.** Each commit should represent one logical change (e.g., "Add new level", "Fix bullet collision", "Adjust enemy speed").
+
+**Never force-push** (`git push --force`). If you need to undo, revert or create a new commit instead. This preserves history and allows reverting to any previous state.
